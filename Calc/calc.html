@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator</title>
+        <style>
+            button{
+                width:50px;
+                height:50px;
+                border-radius: 25px;
+                background-color: rgb(55, 55, 55);
+                color:white;
+                border:none;
+            }
+            button:hover{
+                opacity: 0.7;
+            }
+        </style>
+    </head>
+    <body>
+        <p>
+            <button onclick="calculation += 1;">1</button>
+            <button onclick="calculation += 2;">2</button>
+            <button onclick="calculation += 3;">3</button>
+            <button onclick="calculation += '+';">+</button>  
+        </p>
+        <p>
+            <button onclick="calculation += 4;">4</button>
+            <button onclick="calculation += 5;">5</button>
+            <button onclick="calculation += 6;">6</button>
+            <button onclick="calculation += '-';">-</button>
+        </p>
+        <p>
+            <button onclick="calculation += 7;">7</button>
+            <button onclick="calculation += 8;">8</button>
+            <button onclick="calculation += 9;">9</button>
+            <button onclick="calculation += '*';">x</button>
+        </p>
+        <p>
+            <button onclick="calculation += 0;">0</button>
+            <button onclick="calculation += '/';">/</button>
+            <button onclick="result=eval(calculation);console.log(result);">=</button>
+            <button onclick="result='';calculation='';">clear</button>
+            
+        </p>
+
+
+        <script>
+            let calculation='';
+            let result;
+        </script>
+    </body>
+</html>
