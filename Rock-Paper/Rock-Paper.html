@@ -21,59 +21,73 @@
             Rock-Paper-Sissor
         </p>
         <button class="rockbtn" onclick=" 
-          generate();
-          console.log('ComputerGenerated : ',computerGen);
-          if(computerGen === 'rock')
-           {
-            result = 'Tie';
-           }
-           else if(computerGen === 'paper')
-           {
-            result = 'Lost';
-           }
-           else if(computerGen === 'scissor')
-           {
-            result = 'Won';
-           }
-           alert(`Computer Generated is ${computerGen} You chosed Rock so you ${result}`);
+          myChoice = 'rock';
+          computerGen = generate();
+          getAnswer(computerGen,myChoice);
+
+
+          // console.log('ComputerGenerated : ',computerGen);
+          // if(computerGen === 'rock')
+          //  {
+          //   result = 'Tie';
+          //  }
+          //  else if(computerGen === 'paper')
+          //  {
+          //   result = 'Lost';
+          //  }
+          //  else if(computerGen === 'scissor')
+          //  {
+          //   result = 'Won';
+          //  }
+          //  alert(`Computer Generated is ${computerGen} You chosed Rock so you ${result}`);
         ">
             ✌️
         </button>
         <button class="paperbtn" onclick="
-          generate();
-          console.log('ComputerGenerated : ',computerGen);
-          if(computerGen === 'rock')
-          {
-            result = 'Won';
-          }
-          else if(computerGen === 'paper')
-          {
-            result = 'Tie';
-          }
-          else if(computerGen === 'scissor')
-          {
-            result = 'Lost';
-          }
-          alert(`computer Generated ${computerGen} You chosed Paper so you ${result}`);
+          myChoice = 'paper';
+          computerGen = generate();
+          getAnswer(computerGen,myChoice);
+
+
+
+          // console.log('ComputerGenerated : ',computerGen);
+          // if(computerGen === 'rock')
+          // {
+          //   result = 'Won';
+          // }
+          // else if(computerGen === 'paper')
+          // {
+          //   result = 'Tie';
+          // }
+          // else if(computerGen === 'scissor')
+          // {
+          //   result = 'Lost';
+          // }
+          // alert(`computer Generated ${computerGen} You chosed Paper so you ${result}`);
         ">
             ✋
         </button>
         <button class="scissorbtn" onclick="
-          generate();
-          console.log('ComputerGenerated : ',computerGen);
-          if(computerGen === 'rock')
-          {
-            result = 'Lost';
-          }
-          else if(computerGen === 'paper')
-          {
-            result = 'Won';
-          }
-          else if(computerGen === 'scissor')
-          {
-            result = 'Tie';
-          }
-          alert(`computer Generated ${computerGen} You chosed Paper so you ${result}`);
+          myChoice ='scissor';
+          computerGen = generate();
+          getAnswer(computerGen,myChoice);
+
+
+
+          // console.log('ComputerGenerated : ',computerGen);
+          // if(computerGen === 'rock')
+          // {
+          //   result = 'Lost';
+          // }
+          // else if(computerGen === 'paper')
+          // {
+          //   result = 'Won';
+          // }
+          // else if(computerGen === 'scissor')
+          // {
+          //   result = 'Tie';
+          // }
+          // alert(`computer Generated ${computerGen} You chosed Paper so you ${result}`);
         ">
             ✌️
         </button>
@@ -81,23 +95,46 @@
 
         <script>
             let computerGen;
-            let random;
+            let random,myChoice;
             let result;
             function generate()
             {
                 random = Math.random();
                 if(random <= 1/3)
                 {
-                    computerGen = 'rock';
+                    return 'rock';
                 }
                 else if(random > 1/3 && random <= 2/3)
                 {
-                    computerGen = 'paper';
+                    return 'paper';
                 }
                 else if(random > 2/3 && random <= 1 )
                 {
-                    computerGen = 'scissor';
+                    return 'scissor';
                 }
+            }
+            function getAnswer(computerGen,myChoice)
+            {
+              console.log('ComputerGenerated : ',computerGen);
+              if(computerGen === myChoice)
+              {
+                result = 'Tie';
+                console.log('Tie');
+              }
+              else
+              {
+                if(myChoice === 'rock' && computerGen === 'paper' || myChoice === 'paper' && computerGen === 'scissor' || myChoice === 'scissor' && computerGen === 'rock')
+                {
+                  result = 'Lost';
+                  console.log('Lost');
+                }
+                else if(myChoice === 'rock' && computerGen === 'scissor' || mychoice === 'paper' && computerGen === 'rock' || mychoice === 'scissor' && computerGen === 'paper')
+                {
+                  result = 'Won';
+                  console.log('Won');
+                }
+              }
+              alert(`Computer Generated is ${computerGen} You chosed ${myChoice} so you ${result}`);
             }
             
         </script>
