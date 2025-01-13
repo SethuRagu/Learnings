@@ -47,26 +47,26 @@
               
         
         <p>
-            <button onclick="calculation += 1;">1</button>
-            <button onclick="calculation += 2;">2</button>
-            <button onclick="calculation += 3;">3</button>
-            <button onclick="calculation += '+';">+</button>  
+            <button onclick="calculate(1);">1</button>
+            <button onclick="calculate(2);">2</button>
+            <button onclick="calculate(3);">3</button>
+            <button onclick="calculate('+');">+</button>  
         </p>
         <p>
-            <button onclick="calculation += 4;">4</button>
-            <button onclick="calculation += 5;">5</button>
-            <button onclick="calculation += 6;">6</button>
-            <button onclick="calculation += '-';">-</button>
+            <button onclick="calculate(4);">4</button>
+            <button onclick="calculate(5);">5</button>
+            <button onclick="calculate(6);">6</button>
+            <button onclick="calculate('-');">-</button>
         </p>
         <p>
-            <button onclick="calculation += 7;">7</button>
-            <button onclick="calculation += 8;">8</button>
-            <button onclick="calculation += 9;">9</button>
-            <button onclick="calculation += '*';">x</button>
+            <button onclick="calculate(7);">7</button>
+            <button onclick="calculate(8);">8</button>
+            <button onclick="calculate(9);">9</button>
+            <button onclick="calculate('*');">x</button>
         </p>
         <p>
-            <button onclick="calculation += 0;">0</button>
-            <button onclick="calculation += '/';">/</button>
+            <button onclick="calculate(0);">0</button>
+            <button onclick="calculate('/');">/</button>
             <button onclick="result=eval(calculation);console.log(result);">=</button>
             <button onclick="result='';calculation='';">clear</button>
             
@@ -76,6 +76,10 @@
         <script>
             let calculation='';
             let result;
+            function calculate(value)
+            {
+                calculation +=value;
+            }
         </script>
     </body>
 </html>
