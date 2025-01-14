@@ -3,6 +3,7 @@
     <head>
         <title>Rock-Paper-Scissor</title>
         <style>
+            .resetbtn,
             .scissorbtn,
             .paperbtn,
             .rockbtn{
@@ -25,21 +26,6 @@
           computerGen = generate();
           getAnswer(computerGen,myChoice);
 
-
-          // console.log('ComputerGenerated : ',computerGen);
-          // if(computerGen === 'rock')
-          //  {
-          //   result = 'Tie';
-          //  }
-          //  else if(computerGen === 'paper')
-          //  {
-          //   result = 'Lost';
-          //  }
-          //  else if(computerGen === 'scissor')
-          //  {
-          //   result = 'Won';
-          //  }
-          //  alert(`Computer Generated is ${computerGen} You chosed Rock so you ${result}`);
         ">
             ✌️
         </button>
@@ -48,22 +34,6 @@
           computerGen = generate();
           getAnswer(computerGen,myChoice);
 
-
-
-          // console.log('ComputerGenerated : ',computerGen);
-          // if(computerGen === 'rock')
-          // {
-          //   result = 'Won';
-          // }
-          // else if(computerGen === 'paper')
-          // {
-          //   result = 'Tie';
-          // }
-          // else if(computerGen === 'scissor')
-          // {
-          //   result = 'Lost';
-          // }
-          // alert(`computer Generated ${computerGen} You chosed Paper so you ${result}`);
         ">
             ✋
         </button>
@@ -72,24 +42,11 @@
           computerGen = generate();
           getAnswer(computerGen,myChoice);
 
-
-
-          // console.log('ComputerGenerated : ',computerGen);
-          // if(computerGen === 'rock')
-          // {
-          //   result = 'Lost';
-          // }
-          // else if(computerGen === 'paper')
-          // {
-          //   result = 'Won';
-          // }
-          // else if(computerGen === 'scissor')
-          // {
-          //   result = 'Tie';
-          // }
-          // alert(`computer Generated ${computerGen} You chosed Paper so you ${result}`);
         ">
             ✌️
+        </button>
+        <button class="resetbtn" onclick="status.win=0;status.loss=0;status.tie=0;">
+          Reset Score
         </button>
 
 
@@ -97,6 +54,10 @@
             let computerGen;
             let random,myChoice;
             let result;
+            let status = {
+              win : 0, loss : 0, tie : 0
+
+            };
             function generate()
             {
                 random = Math.random();
@@ -119,6 +80,7 @@
               if(computerGen === myChoice)
               {
                 result = 'Tie';
+                status.tie++;
                 console.log('Tie');
               }
               else
@@ -126,15 +88,17 @@
                 if(myChoice === 'rock' && computerGen === 'paper' || myChoice === 'paper' && computerGen === 'scissor' || myChoice === 'scissor' && computerGen === 'rock')
                 {
                   result = 'Lost';
+                  status.loss++;
                   console.log('Lost');
                 }
                 else if(myChoice === 'rock' && computerGen === 'scissor' || mychoice === 'paper' && computerGen === 'rock' || mychoice === 'scissor' && computerGen === 'paper')
                 {
                   result = 'Won';
+                  status.win++;
                   console.log('Won');
                 }
               }
-              alert(`Computer Generated is ${computerGen} You chosed ${myChoice} so you ${result}`);
+              alert(`Computer's Choice was : ${computerGen} , Your Choice was : ${myChoice} \n Won : ${status.win} ,Lost ${status.loss} ,Tied ${status.tie} `);
             }
             
         </script>
