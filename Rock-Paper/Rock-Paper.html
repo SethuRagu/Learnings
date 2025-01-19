@@ -45,7 +45,7 @@
         ">
             ✌️
         </button>
-        <button class="resetbtn" onclick="status.win=0;status.loss=0;status.tie=0;">
+        <button class="resetbtn" onclick="localStorage.removeItem('score')">
           Reset Score
         </button>
 
@@ -54,10 +54,8 @@
             let computerGen;
             let random,myChoice;
             let result;
-            let status = {
-              win : 0, loss : 0, tie : 0
-
-            };
+            let score = JSON.parse(localStorage.getItem('score')) || { noWon:0,noLost:0,noTie:0 };
+            console.log(localStorage.getItem('score'));
             function generate()
             {
                 random = Math.random();
@@ -80,7 +78,7 @@
               if(computerGen === myChoice)
               {
                 result = 'Tie';
-                status.tie++;
+                score.noTie++;
                 console.log('Tie');
               }
               else
@@ -88,17 +86,18 @@
                 if(myChoice === 'rock' && computerGen === 'paper' || myChoice === 'paper' && computerGen === 'scissor' || myChoice === 'scissor' && computerGen === 'rock')
                 {
                   result = 'Lost';
-                  status.loss++;
+                  score.noLost++;
                   console.log('Lost');
                 }
                 else if(myChoice === 'rock' && computerGen === 'scissor' || mychoice === 'paper' && computerGen === 'rock' || mychoice === 'scissor' && computerGen === 'paper')
                 {
                   result = 'Won';
-                  status.win++;
+                  score.noWon++;
                   console.log('Won');
                 }
               }
-              alert(`Computer's Choice was : ${computerGen} , Your Choice was : ${myChoice} \n Won : ${status.win} ,Lost ${status.loss} ,Tied ${status.tie} `);
+              localStorage.setItem('score',JSON.stringify(score));
+              alert(`Computer's Choice was : ${computerGen} , Your Choice was : ${myChoice} \n Won : ${score.noWon} ,Lost ${score.noLost} ,Tied ${score.noTie} `);
             }
             
         </script>

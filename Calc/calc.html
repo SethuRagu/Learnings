@@ -67,19 +67,22 @@
         <p>
             <button onclick="calculate(0);">0</button>
             <button onclick="calculate('/');">/</button>
-            <button onclick="result=eval(calculation);console.log(result);">=</button>
-            <button onclick="result='';calculation='';">clear</button>
+            <button onclick="result=eval(calculation);console.log(result);"> = </button>
+            <button onclick="result='';localStorage.removeItem('calculation');">clear</button>
             
         </p>
 
 
         <script>
-            let calculation='';
+            let calculation=localStorage.getItem('calculation') || '';
             let result;
             function calculate(value)
             {
                 calculation +=value;
+                localStorage.setItem('calculation',calculation);
             }
+            
+            console.log(localStorage.getItem('calculation'));
         </script>
     </body>
 </html>
