@@ -3,6 +3,39 @@
     <head>
         <title>Calculator</title>
         <style>
+            .calc-maincontainer{
+                display : flex;
+                flex-direction: row;
+                justify-content: center;
+            }
+            .buttons-container{
+                display: flex;
+                flex-direction: column;
+                row-gap: 10px;
+                align-items: center;
+                
+            }
+            .calc-container{
+                display: flex;
+                flex-direction: column;
+                row-gap: 10px;
+            }
+        
+            .calcline4-container,
+            .calcline3-container,
+            .calcline2-container,
+            .calcline1-container{
+                display: flex;
+                flex-direction: row;
+                column-gap: 10px;
+            }
+            .inputremove-container{
+                display: flex;
+                flex-direction: row;
+                column-gap: 5px;
+                align-items: center;
+            }
+
             button{
                 width:50px;
                 height:50px;
@@ -17,72 +50,105 @@
             .body{
                 background-color:#E5E1DA;
             }
-            li{
-                align-items: center;
-            }
-            h1,
-            p{
-                text-align: center;
-            }
             h1{
                 color:#28728b;
             }
             .instruct{
                 color:#235e72;
             }
+            .inputdisplay{
+                height: 30px;
+                width: 200px;
+            }
         </style>
     </head>
     <body class="body">
-        <h1>
-            This is a Simple Calc.
-        </h1>
-        <p class="instruct">
-            1. Enter Operands and Operator to Calculate.</br>
-            2. Clear the Console before next operation.</br>
-            3. Don't Perform not defined Maths  --> To </br>make sense :number / 0 and similar stuffs.</br>
-            5. I hape that make sense HAVE FUN GUYS !
-        </p>
+        
+        <div class="calc-maincontainer">
+            <div class="calc-container">
+                <h1>
+                    This is a Simple Calc.
+                </h1>
+                <p class="instruct">
+                    1. You Should use buttons to enter Input</br>
+                    2. Clear the Console before next operation.</br>
+                    3. Don't Perform not defined Maths  --> To </br>make sense :number / 0 and similar stuffs.</br>
+                    5. I hope that make's sense HAVE FUN GUYS !
+                </p>
+         <!--       <div class="inputremove-container">
+                    <input class="inputdisplay" placeholder="0">
+                    <button class="removeelement" > <--× </button>
+                </div>  -->
+                
+                <div class="buttons-container">
+                    <div class="inputremove-container">
+                        <input class="inputdisplay" placeholder="0">
+                        <button class="removeelement"> ×--> </button>
+                    </div>
+                    <div class="calcline1-container">
+                        <button onclick="calculate(1);">1</button>
+                        <button onclick="calculate(2);">2</button>
+                        <button onclick="calculate(3);">3</button>
+                        <button onclick="calculate('+');">+</button>
+                    </div>
+                    <div class="calcline2-container">
+                        <button onclick="calculate(4);">4</button>
+                        <button onclick="calculate(5);">5</button>
+                        <button onclick="calculate(6);">6</button>
+                        <button onclick="calculate('-');">-</button>
+                    </div>
+                    <div class="calcline3-container">
+                        <button onclick="calculate(7);">7</button>
+                        <button onclick="calculate(8);">8</button>
+                        <button onclick="calculate(9);">9</button>
+                        <button onclick="calculate('*');">x</button>
+                    </div>
+                    <div class="calcline4-container">
+                        <button onclick="calculate(0);">0</button>
+                        <button onclick="calculate('/');">/</button>
+                        <button onclick="showCalc();"> = </button>
+                        <button onclick="clearDisplay();">clear</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
              
              
               
         
-        <p>
-            <button onclick="calculate(1);">1</button>
-            <button onclick="calculate(2);">2</button>
-            <button onclick="calculate(3);">3</button>
-            <button onclick="calculate('+');">+</button>  
-        </p>
-        <p>
-            <button onclick="calculate(4);">4</button>
-            <button onclick="calculate(5);">5</button>
-            <button onclick="calculate(6);">6</button>
-            <button onclick="calculate('-');">-</button>
-        </p>
-        <p>
-            <button onclick="calculate(7);">7</button>
-            <button onclick="calculate(8);">8</button>
-            <button onclick="calculate(9);">9</button>
-            <button onclick="calculate('*');">x</button>
-        </p>
-        <p>
-            <button onclick="calculate(0);">0</button>
-            <button onclick="calculate('/');">/</button>
-            <button onclick="result=eval(calculation);console.log(result);"> = </button>
-            <button onclick="result='';localStorage.removeItem('calculation');">clear</button>
-            
-        </p>
 
 
         <script>
-            let calculation=localStorage.getItem('calculation') || '';
+            let calculation='';
             let result;
+            let lastCalcu='';
+        
             function calculate(value)
             {
-                calculation +=value;
-                localStorage.setItem('calculation',calculation);
+                calculation += value;
+                document.querySelector('.inputdisplay').value = `${calculation}`;
+        
             }
-            
-            console.log(localStorage.getItem('calculation'));
+            function showCalc()
+            {
+                result = eval(calculation);
+                document.querySelector('.inputdisplay').value = `${result}`;
+                calculation = '';
+            }
+            function clearDisplay()
+            {
+                result = 0;
+                calculation = '';
+                document.querySelector('.inputdisplay').value = `${result}`;
+            }
+            // function removeElement()
+            // {
+            //     calculation.trimEnd;
+            //     document.querySelector('.inputdisplay').value = `${calculation}`;
+            // }
+            console.log(calculation);
         </script>
     </body>
 </html>
